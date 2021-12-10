@@ -1,9 +1,9 @@
 {
   "name": "@igon/helper",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "peerDependencies": {
-    "@angular/common": "^10.2.4",
-    "@angular/core": "^10.2.4"
+    "@angular/common": "^6.1.9",
+    "@angular/core": "^6.1.9"
   },
   "dependencies": {
     "tslib": "^2.0.0"
