@@ -1,11 +1,11 @@
 {
   "name": "@igon/helper",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "peerDependencies": {
-    "@angular/common": "^6.1.9",
-    "@angular/core": "^6.1.9"
+    "@angular/common": ">=6.x",
+    "@angular/core": ">=6.x"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": ">=2.0.0"
   }
 }
