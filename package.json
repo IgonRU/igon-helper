@@ -1,6 +1,6 @@
 {
   "name": "@igon/helper",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "peerDependencies": {
     "@angular/common": ">=6.x",
     "@angular/core": ">=6.x"
