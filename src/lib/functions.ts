@@ -4,9 +4,10 @@ export class FunctionsHelper {
   static debugMode = false;
 
   static b64DecodeUnicode(str: string) {
-    return decodeURIComponent(Array.prototype.map.call(atob(str), function(c) {
+    const result = decodeURIComponent(Array.prototype.map.call(atob(str), function(c) {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
+    return result;
   }
 
   /**
@@ -22,7 +23,7 @@ export class FunctionsHelper {
    */
   static arrayDeleteItem<T>(array: T[], deleteItem: Partial<T>, compare: keyof typeof deleteItem = null): T[] {
     // if (_DEV) console.log('arrayDeleteItem: ', array, deleteItem, compare);
-    return array.filter(item => {
+    const resultArray = array.filter(item => {
       let result = false;
       if (compare) {
         result = item[compare] != deleteItem[compare];
@@ -31,6 +32,8 @@ export class FunctionsHelper {
       }
       return result;
     });
+
+    return resultArray;
   }
 
   /**
@@ -105,7 +108,8 @@ export class FunctionsHelper {
    * @returns resolved value
    */
   static parseTplGet(path: string, obj: {}, fallback = `$\{${path}}`) {
-    return path.split('.').reduce((res, key) => res[key] || fallback, obj);
+    const result = path.split('.').reduce((res, key) => res[key] || fallback, obj);
+    return result;
   }
   /**
    * Extract `path`s from template string and replace them with resolved value
@@ -116,10 +120,12 @@ export class FunctionsHelper {
    * @returns
    */
   static parseTpl(template: string, map: {}, fallback: string | null = null) {
-    return template.replace(/\$\{.+?}/g, (match) => {
+    const result = template.replace(/\$\{.+?}/g, (match) => {
       const path = match.substr(2, match.length - 3).trim();
       return FunctionsHelper.parseTplGet(path, map, fallback);
     });
+
+    return result;
   }
   /**
    * Parse url and replace templates (e.g. ${path.to.object.property})
@@ -144,15 +150,18 @@ export class FunctionsHelper {
   static pluralForm(number: number, after: string[]) {
     const cases = [2, 0, 1, 1, 1, 2];
     const index = (number % 100 > 4 && number % 100 < 20) ? 2 : cases[Math.min(number % 10, 5)];
-    return number + ' ' + after[index];
+    const result = number + ' ' + after[index];
+    return result;
   }
 
   static getSnapshotQueryParam(snapshot: ActivatedRouteSnapshot, paramName: string, defaultValue = null) {
-    return paramName in snapshot.queryParams ? snapshot.queryParams[paramName] : defaultValue;
+    const result = paramName in snapshot.queryParams ? snapshot.queryParams[paramName] : defaultValue;
+    return result;
   }
 
   static getSnapshotParam(snapshot: ActivatedRouteSnapshot, paramName: string, defaultValue = null) {
-    return paramName in snapshot.params ? snapshot.params[paramName] : defaultValue;
+    const result = paramName in snapshot.params ? snapshot.params[paramName] : defaultValue;
+    return result;
   }
 
   /**
